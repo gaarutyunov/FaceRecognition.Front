@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {SocketsService} from 'lib-sockets/src/lib/services/sockets.service';
+import {SessionService} from './services/session.service';
+import {take} from 'rxjs/operators';
+import {QrClient} from './interfaces/qr-client';
+import {environment} from '../environments/environment';
 
 @Component({
     selector: 'app-root',
@@ -7,16 +11,21 @@ import {SocketsService} from 'lib-sockets/src/lib/services/sockets.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    title = 'client';
+    private readonly socketsService: SocketsService;
+    private readonly sessionService: SessionService;
 
-    private readonly _socketsService: SocketsService;
-
-    constructor(socketsService: SocketsService) {
-        this._socketsService = socketsService;
+    constructor(socketsService: SocketsService, sessionService: SessionService) {
+        this.socketsService = socketsService;
+        this.sessionService = sessionService;
     }
 
     ngOnInit(): void {
+        this.sessionService.loadSession();
+        // this.socketsService.initConnection().pipe(take(1)).subscribe(() => {
+        //     this.socketsService.registerHandler<QrClient, 'GenerateQrUrl'>('GenerateQrUrl', (url: string) => {
+        //         console.log(url);
+        //     }).subscribe();
+        //     this.socketsService.invoke<string>('GenerateQrUrl', environment.baseUrl).pipe(take(1)).subscribe();
+        // });
     }
-
-
 }

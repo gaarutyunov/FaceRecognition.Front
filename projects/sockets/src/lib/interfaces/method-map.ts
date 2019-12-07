@@ -1,3 +1,3 @@
 export interface MethodMap {
-	[methodName: string]: (...args: any[]) => void
+    [methodName: string]: (...args: any[]) => void;
 }

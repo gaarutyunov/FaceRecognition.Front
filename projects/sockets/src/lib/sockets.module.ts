@@ -27,7 +27,7 @@ export class SocketsModule {
                 },
                 {
                     provide: SessionFacade,
-                    useClass: sessionFacade
+                    useExisting: sessionFacade
                 }
             ]
         };
