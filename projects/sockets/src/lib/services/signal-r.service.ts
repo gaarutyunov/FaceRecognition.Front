@@ -24,13 +24,14 @@ export class SignalRService {
         return this._registerHandler(methodName, method);
     }
 
-    public invoke<T>(methodName: string, args: any[]): Observable<T> {
+    public invoke<T>(methodName: string, ...args: any[]): Observable<T> {
         return this.connection.pipe(
             filter((conn: Undefined<HubConnection>) => !!conn),
             take(1),
             mergeMap((conn: Undefined<HubConnection>) => {
+                console.log(args);
                 if (args.length > 0) {
-                    return from((conn as HubConnection).invoke(methodName, args));
+                    return from((conn as HubConnection).invoke(methodName, ...args));
                 }
                 return from((conn as HubConnection).invoke(methodName));
             })

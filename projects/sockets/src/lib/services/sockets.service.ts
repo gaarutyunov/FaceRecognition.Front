@@ -22,7 +22,7 @@ export class SocketsService {
     }
 
     public invoke<T>(methodName: string, ...args: any[]): Observable<T> {
-        return this.signalR.invoke<T>(methodName, args);
+        return this.signalR.invoke<T>(methodName, ...args);
     }
 
     public registerHandler<TMap extends MethodMap, TKey extends keyof TMap>(methodName: TKey,

@@ -21,11 +21,6 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.sessionService.loadSession();
-        // this.socketsService.initConnection().pipe(take(1)).subscribe(() => {
-        //     this.socketsService.registerHandler<QrClient, 'GenerateQrUrl'>('GenerateQrUrl', (url: string) => {
-        //         console.log(url);
-        //     }).subscribe();
-        //     this.socketsService.invoke<string>('GenerateQrUrl', environment.baseUrl).pipe(take(1)).subscribe();
-        // });
+        this.socketsService.initConnection().pipe(take(1)).subscribe();
     }
 }

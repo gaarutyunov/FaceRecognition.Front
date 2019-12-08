@@ -13,6 +13,23 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import {HttpClientModule} from '@angular/common/http';
 import {API_URL} from './tokens/api-url';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { QrComponent } from './components/qr/qr.component';
+import { FrComponent } from './components/fr/fr.component';
+import {WebcamModule} from 'ngx-webcam';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    MatFormFieldModule, MatInputModule, MatDialogModule
+} from '@angular/material';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import {BreadcrumbModule} from 'angular-crumbs';
+import { CaptureComponent } from './components/capture/capture.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +37,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         LoginComponent,
         RegisterComponent,
         HomeComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        QrComponent,
+        FrComponent,
+        NavigationComponent,
+        CaptureComponent
     ],
     imports: [
         BrowserModule,
@@ -30,7 +51,20 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
             SessionService),
         HttpClientModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        WebcamModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        LayoutModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        BreadcrumbModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDialogModule
     ],
     providers: [
         SessionService,
@@ -39,7 +73,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
             useValue: environment.baseUrl
         }
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [
+        CaptureComponent
+    ]
 })
 export class AppModule {
 }

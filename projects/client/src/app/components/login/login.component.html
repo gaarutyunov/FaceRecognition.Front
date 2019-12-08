@@ -1,13 +1,53 @@
-<p>{{ name }}</p>
+<div class="container auth-wrapper">
+    <div class="row h-100 align-items-center justify-content-center">
+        <div class="col-lg-4 d-flex align-items-center justify-content-center">
+            <mat-card class="w-100">
+                <mat-card-title>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 align-items-center d-flex justify-content-center mt-1">
+                                <h2>Login</h2>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-title>
+                <mat-card-content>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <form [formGroup]="formGroup">
+                                    <div class="row">
+                                        <div class="col-12 my-1">
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <mat-label>Login</mat-label>
+                                                <input type="text" name="login" id="login" formControlName="login"
+                                                       matInput>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <mat-form-field appearance="outline" class="w-100">
+                                                <mat-label>Password</mat-label>
+                                                <input type="password" name="password" id="password"
+                                                       formControlName="password" matInput>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 my-3 d-flex align-items-center justify-content-center">
+                                <button mat-raised-button type="submit" (click)="login()" color="primary">Login
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
 
-<form [formGroup]="formGroup">
-    <label for="login">
-        Login
-        <input type="text" name="login" id="login" formControlName="login">
-    </label>
-    <label for="password">
-        Password
-        <input type="password" name="password" id="password" formControlName="password">
-    </label>
-    <button type="submit" (click)="login()">login</button>
-</form>
+

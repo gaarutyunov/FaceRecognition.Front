@@ -1,0 +1,6 @@
+<div class="position-relative">
+    <webcam [trigger]="capture$" (imageCapture)="imageCaptured($event)"></webcam>
+    <button mat-icon-button (click)="capture()" class="position-absolute capture-button" color="accent">
+        <mat-icon>camera</mat-icon>
+    </button>
+</div>

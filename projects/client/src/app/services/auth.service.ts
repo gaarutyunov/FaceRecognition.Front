@@ -21,8 +21,8 @@ export class AuthService {
         this.apiUrl = apiUrl;
     }
 
-    public register(login: string, password: string): Observable<UserResponse> {
-        return this.http.post<UserResponse>(this.apiUrl + 'User/Register', new RegisterRequest(login, password)).pipe(
+    public register(login: string, password: string, file: string): Observable<UserResponse> {
+        return this.http.post<UserResponse>(this.apiUrl + 'User/Register', new RegisterRequest(login, password, file)).pipe(
             map((user: UserResponse) => new UserResponse(user.id, user.login)),
             catchError((error: HttpErrorResponse) => {
                 console.log(error);
