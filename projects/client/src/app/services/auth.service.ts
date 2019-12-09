@@ -31,8 +31,8 @@ export class AuthService {
         );
     }
 
-    public login(login: string, password: string): Observable<TokenResponse> {
-        return this.http.post<TokenResponse>( this.apiUrl + 'User/Login', new LoginRequest(login, password)).pipe(
+    public login(login: string, password: string, file: string): Observable<TokenResponse> {
+        return this.http.post<TokenResponse>( this.apiUrl + 'User/Login', new LoginRequest(login, password, file)).pipe(
             map((tokenResponse: TokenResponse) => new TokenResponse(tokenResponse.token)),
             catchError((error: HttpErrorResponse) => {
                 console.log(error);
